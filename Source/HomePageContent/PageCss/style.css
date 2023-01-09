@@ -1,0 +1,56 @@
+.container{
+    min-height: 100vh;
+    position: relative;
+    background-image: linear-gradient(rgb(51, 100, 100) 20%, rgba(153, 204, 255, 0.9) 96%);
+}
+.banner{
+    height: 150px;
+    background-image: linear-gradient(rgba(153, 204, 255, 0.9) 4%, rgba(51, 102, 102, 0.8) 90%);
+    box-shadow: 0px 10px 50px -10px rgba(51, 102, 102, 0.8);
+}
+.title{
+    font-weight: bolder;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 2%;
+    color: rgb(29, 71, 54);
+    text-shadow: 3px 3px rgba(29, 71, 54, 0.6);
+}
+.content{
+    margin-top: 100px;
+}
+.page{
+    height: 200px;
+    border: black 5px solid;
+    border-radius: 30px;
+    padding: 10px;
+    margin: 10px 0;
+}
+.add-button{
+    height: 50px;
+    width: 50px;
+    margin-top: 20px;
+    opacity: 0.7;
+}
+.add-button:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+.menu{
+    height: 200px;
+    border: black 2px solid;
+    border-radius: 10px;
+    margin-top: 100px;
+    text-align: center;
+    font-weight: bolder;
+    font-style: italic;
+}
+.footer{
+    text-align: center;
+    border-top: 1px black solid;
+    position: absolute;
+    bottom: 0;
+    width: 100%; 
+}
