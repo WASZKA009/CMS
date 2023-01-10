@@ -39,12 +39,18 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
                         <h5>MENU</h5>
                         <!-- PHP -->
                             <?php
-                            for($i = 0; $i < 3; $i++) {
-                                if(isset($rowsAll[$i]["title"]))
+                            $maxNumber = 4;
+                            for($i = 0; $i < $maxNumber; $i++) {
+                                if(isset($rowsAll[$i]["title"])){
+                                    if($rowsAll[$i]["id"]==$_GET["id"]){
+                                        $maxNumber++;
+                                        continue;
+                                    }
                                     echo '
-                                        <hr>
-                                        <p>'.$rowsAll[$i]["title"].'</p>
+                                        <hr style="margin: 0">
+                                        <p><a href="templatePage.php?id='.$rowsAll[$i]["id"].'" class="menuLink">'.$rowsAll[$i]["title"].'-></a></p>
                                     ';
+                                }
                             }
                             ?>
                         <!-- /PHP -->
@@ -64,8 +70,79 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
                 </p>
             </div>
         </div>    
+        <div class="workingButtons">
+            <button data-bs-toggle="modal" data-bs-target="#exampleModal">DELETE</button>
+            <button>EDIT</button>
+        </div>
+
+            <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content"  style="background-color: #003d35">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: antiquewhite">Czy na pewno chcesz usunąć?
+                    <img src="./Source/HomePageContent/PagePhotos/infoIcon.png" style="width:20px; height:20px"
+                            data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-title="Dane mogą zostać zmienione przy poźniejszej edycji strony">
+                    </img>
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="delete" value="<?php print $_GET["id"] ?>" >Create Page</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+            <!-- Modal1 -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content"  style="background-color: #003d35">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: antiquewhite">Czy na pewno chcesz usunąć?
+                    <img src="./Source/HomePageContent/PagePhotos/infoIcon.png" style="width:20px; height:20px"
+                            data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-title="Dane mogą zostać zmienione przy poźniejszej edycji strony">
+                    </img>
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="delete" value="<?php print $_GET["id"] ?>" >Create Page</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+            <!-- Modal2 -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content"  style="background-color: #003d35">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: antiquewhite">Czy na pewno chcesz usunąć?
+                    <img src="./Source/HomePageContent/PagePhotos/infoIcon.png" style="width:20px; height:20px"
+                            data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-title="Dane mogą zostać zmienione przy poźniejszej edycji strony">
+                    </img>
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="delete" value="<?php print $_GET["id"] ?>" >Create Page</button>
+            </div>
+            </div>
+        </div>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-        <script src="./Scripts/js/addingPage.js"></script>
+        <script src="./Scripts/js/deleteWebsite.js"></script>
     </body>
 </html>
+
+<!-- ZROBIĆ ŚMIESZNE MODALE -->
+<!-- EDIT -->
+<!-- DOKOŃCZYĆ TO GÓWNO -->

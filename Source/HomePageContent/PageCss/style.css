@@ -28,10 +28,9 @@
     margin-top: 100px;
 }
 .page{
-    height: 200px;
     border: black 5px solid;
     border-radius: 30px;
-    padding: 10px;
+    padding: 20px;
     margin: 10px 0;
 }
 .add-button{
@@ -45,7 +44,7 @@
     opacity: 1;
 }
 .menu{
-    height: 200px;
+    min-height: 200px;
     border: black 2px solid;
     border-radius: 10px;
     margin-top: 100px;
@@ -53,10 +52,47 @@
     font-weight: bolder;
     font-style: italic;
 }
+.menuLink{
+    text-decoration: none;
+    color: sandybrown;
+}
 .footer{
     text-align: center;
     border-top: 1px black solid;
     position: absolute;
     bottom: 0;
     width: 100%; 
+}
+.form-styles{
+    background-color: #99ccff;
+    width: 70%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 20px;
+    border: solid 2px #336666;
+}
+.input, .inputColor{
+    border: 2px solid #003d00;
+    border-radius: 10px;
+    margin: 5px 0;
+    padding: 3px;
+    outline:none;
+}
+.input:focus, .inputColor:focus{
+    border: 2px solid #663333;
+    border-radius: 10px;
+    margin: 5px 0;
+    padding: 3px;
+}
+.displayColor{
+    margin-top: 10px;
+    border-radius: 40px;
+    width: 100px;
+    height: 20px;
+    text-align: center;
+}
+.workingButtons{
+    position:absolute;
+    bottom:0;
+    right:0;
 }

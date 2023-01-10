@@ -39,7 +39,8 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
                                             '.$row["subtitle"].'
                                         </h3>
                                         <h5 class="smth">
-                                            '.$row["color"].'
+                                            Kolor:<div style="background-color:'.$row["color"].'" class="displayColor">
+                                            </div>
                                         </h5>
                                         <a href="templatePage.php?id='.$row["id"].'">Go to website</a>
                                     </div>
@@ -53,24 +54,31 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
                             <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content"  style="background-color: #003d35">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: antiquewhite">Podaj podstawowe informacje o stronie
+                                    <img src="./Source/HomePageContent/PagePhotos/infoIcon.png" style="width:20px; height:20px"
+                                            data-bs-toggle="tooltip" data-bs-placement="right"
+                                            data-bs-title="Dane mogą zostać zmienione przy poźniejszej edycji strony">
+                                    </img>
+                                </h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div>
-                                    <label for="title">Tytuł</label>
-                                    <input type="text" name="title" id="title"><br>
-                                    <label for="subtitle">Podtytuł</label>
-                                    <input type="text" name="subtitle" id="subtitle"><br>
-                                    <label for="color">Kolor</label>
-                                    <input type="color" name="color" id="color">
+                                    <form class="form-styles">
+                                        <label for="title">Tytuł: </label>
+                                        <input type="text" name="title" id="title" class="input"><br>
+                                        <label for="subtitle">Podtytuł: </label>
+                                        <input type="text" name="subtitle" id="subtitle" class="input"><br>
+                                        <label for="color">Kolor strony: </label>
+                                        <input type="color" name="color" id="color" value="#336666" class="inputColor">
+                                    </form>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="createButton">Create Page</button>
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="createButton" >Create Page</button>
                             </div>
                             </div>
                         </div>
@@ -82,11 +90,11 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
                         <h5>MENU</h5>
                         <!-- PHP -->
                             <?php
-                            for($i = 0; $i < 5; $i++) {
+                            for($i = 0; $i < 4; $i++) {
                                 if(isset($rows[$i]["title"]))
                                     echo '
-                                        <hr>
-                                        <p>'.$rows[$i]["title"].'</p>
+                                        <hr style="margin: 0">
+                                        <p><a href="templatePage.php?id='.$rows[$i]["id"].'" class="menuLink">'.$rows[$i]["title"].'-></a></p>
                                     ';
                             }
                             ?>
@@ -107,8 +115,13 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
                 </p>
             </div>
         </div>    
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+        <script>
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        </script>
         <script src="./Scripts/js/addingPage.js"></script>
     </body>
 </html>
