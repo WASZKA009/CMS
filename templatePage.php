@@ -37,9 +37,11 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-2 offset-1">
                     <div class="menu">
                         <h5>MENU</h5>
+                            <hr style="margin: 0">
+                            <p><a href="index.php" class="menuLink">STRONA GŁÓWNA-></a></p>
                         <!-- PHP -->
                             <?php
-                            $maxNumber = 4;
+                            $maxNumber = 3;
                             for($i = 0; $i < $maxNumber; $i++) {
                                 if(isset($rowsAll[$i]["title"])){
                                     if($rowsAll[$i]["id"]==$_GET["id"]){
@@ -48,7 +50,7 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
                                     }
                                     echo '
                                         <hr style="margin: 0">
-                                        <p><a href="templatePage.php?id='.$rowsAll[$i]["id"].'" class="menuLink">'.$rowsAll[$i]["title"].'-></a></p>
+                                        <p><a href="templatePage.php?id='.$rowsAll[$i]["id"].'" class="menuLink">'.strtoupper($rowsAll[$i]["title"]).'-></a></p>
                                     ';
                                 }
                             }
@@ -60,7 +62,7 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
             <!-- Footer -->
             <div class="row footer">
                 <p class="col-4">
-                    Copyright &copy;2022
+                    Copyright &copy;2023
                 </p>
                 <p class="col-4">
                     Oskar Waszkiewicz

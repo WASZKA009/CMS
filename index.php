@@ -105,7 +105,7 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
             <!-- Footer -->
             <div class="row footer">
                 <p class="col-4">
-                    Copyright &copy;2022
+                    Copyright &copy;2023
                 </p>
                 <p class="col-4">
                     Oskar Waszkiewicz
