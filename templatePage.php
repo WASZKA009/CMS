@@ -31,7 +31,7 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-7 offset-1">
                     <div class="content">
                         <h3 class="subtitle"><?php print $rows[0]["subtitle"] ?></h3>
-                        <p class="textArea" id="textArea"></p>
+                        <p class="textArea" id="textArea"><?php print $rows[0]["content"] ?></p>
                     </div>
                 </div>
                 <div class="col-2 offset-1">
@@ -71,68 +71,88 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>    
         <div class="workingButtons">
-            <button data-bs-toggle="modal" data-bs-target="#exampleModal">DELETE</button>
-            <button>EDIT</button>
+            <button data-bs-toggle="modal" data-bs-target="#deleteModal">DELETE</button>
+            <button data-bs-toggle="modal" data-bs-target="#changeModal">EDIT</button>
         </div>
 
+           <!-- ModalChange -->
+           <div class="modal fade" id="changeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content"  style="background-color: #003d35">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: antiquewhite">Zmiana informacji na stronie
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <form class="form-styles">
+                                        <input type="text" id="id" value="<?php print $rows[0]["id"] ?>" hidden>
+                                        <label for="title">Tytuł: </label>
+                                        <input type="text" name="title" id="title" class="input" value="<?php print $rows[0]["title"] ?>"><br>
+                                        <label for="subtitle">Podtytuł: </label>
+                                        <input type="text" name="subtitle" id="subtitle" class="input" value="<?php print $rows[0]["subtitle"] ?>"><br>
+                                        <label for="color">Kolor strony: </label>
+                                        <input type="color" name="color" id="color" value="<?php print $rows[0]["color"] ?>" class="inputColor"><br>
+                                        <label for="color">Zawartość strony: </label>
+                                        <textarea type="color" id="txtarea" class=""><?php print $rows[0]["content"] ?></textarea>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="changeButton" >Save</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
             <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content"  style="background-color: #003d35">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: antiquewhite">Czy na pewno chcesz usunąć?
-                    <img src="./Source/HomePageContent/PagePhotos/infoIcon.png" style="width:20px; height:20px"
-                            data-bs-toggle="tooltip" data-bs-placement="right"
-                            data-bs-title="Dane mogą zostać zmienione przy poźniejszej edycji strony">
-                    </img>
+                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: antiquewhite">Czy chcesz usunąć tą stronę?
                 </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="delete" value="<?php print $_GET["id"] ?>" >Create Page</button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal_1">Usuń</button>
             </div>
             </div>
         </div>
         </div>
 
             <!-- Modal1 -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content"  style="background-color: #003d35">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: antiquewhite">Czy na pewno chcesz usunąć?
-                    <img src="./Source/HomePageContent/PagePhotos/infoIcon.png" style="width:20px; height:20px"
-                            data-bs-toggle="tooltip" data-bs-placement="right"
-                            data-bs-title="Dane mogą zostać zmienione przy poźniejszej edycji strony">
-                    </img>
+                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: antiquewhite">Jesteś pewny?
                 </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="delete" value="<?php print $_GET["id"] ?>" >Create Page</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nie</button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal_2">Tak</button>
             </div>
             </div>
         </div>
         </div>
 
             <!-- Modal2 -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteModal_2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content"  style="background-color: #003d35">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: antiquewhite">Czy na pewno chcesz usunąć?
-                    <img src="./Source/HomePageContent/PagePhotos/infoIcon.png" style="width:20px; height:20px"
-                            data-bs-toggle="tooltip" data-bs-placement="right"
-                            data-bs-title="Dane mogą zostać zmienione przy poźniejszej edycji strony">
-                    </img>
+                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: antiquewhite">Na pewno jesteś pewny?
                 </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="delete" value="<?php print $_GET["id"] ?>" >Create Page</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nie</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="delete" value="<?php print $_GET["id"] ?>" >TAK</button>
             </div>
             </div>
         </div>
@@ -140,9 +160,6 @@ $rows = $query -> fetchAll(PDO::FETCH_ASSOC);
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
         <script src="./Scripts/js/deleteWebsite.js"></script>
+        <script src="./Scripts/js/changeButton.js"></script>
     </body>
 </html>
-
-<!-- ZROBIĆ ŚMIESZNE MODALE -->
-<!-- EDIT -->
-<!-- DOKOŃCZYĆ TO GÓWNO -->
